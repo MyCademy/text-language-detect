@@ -1567,7 +1567,7 @@ class TextLanguageDetect
      */
     static function _next_char($str, &$counter, $special_convert = false)
     {
-        $char = $str{$counter++};
+        $char = $str[$counter++];
         $ord = ord($char);
 
         // for a description of the utf8 system see
@@ -1591,7 +1591,7 @@ class TextLanguageDetect
 
         } elseif ($ord >> 5 == 6) { // two-byte char
             // multi-byte chars
-            $nextchar = $str{$counter++}; // get next byte
+            $nextchar = $str[$counter++]; // get next byte
 
             // lower-casing of non-ascii characters is still incomplete
 
@@ -1633,12 +1633,12 @@ class TextLanguageDetect
         } elseif ($ord >> 4  == 14) { // three-byte char
 
             // tag on next 2 bytes
-            return $char . $str{$counter++} . $str{$counter++};
+            return $char . $str[$counter++] . $str[$counter++];
 
         } elseif ($ord >> 3 == 30) { // four-byte char
 
             // tag on next 3 bytes
-            return $char . $str{$counter++} . $str{$counter++} . $str{$counter++};
+            return $char . $str[$counter++] . $str[$counter++] . $str[$counter++];
 
         } else {
             // error?
