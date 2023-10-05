@@ -227,7 +227,7 @@ class TextLanguageDetect
      */
     public function _get_data_loc($fname)
     {
-        if ($fname{0} == '/' || $fname{0} == '.') {
+        if ($fname[0] == '/' || $fname[0] == '.') {
             // if filename starts with a slash, assume it's an absolute pathname
             // and skip whatever is in $this->_data_dir
             return $fname;
